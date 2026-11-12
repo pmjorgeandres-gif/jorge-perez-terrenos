@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Terrenos con Jorge Pérez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<meta name="description" content="Terrenos y departamentos de inversión en Yucatán con Jorge Pérez, asesor de Grupo López-Rosa. Videos, planes de pago y brochures de cada proyecto.">
+<meta property="og:title" content="Terrenos con Jorge Pérez">
+<meta property="og:description" content="Terrenos y departamentos de inversión en Yucatán con Jorge Pérez, asesor de Grupo López-Rosa. Videos, planes de pago y brochures de cada proyecto.">
+<meta property="og:image" content="img/presentacion-poster.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#25272A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2325272A'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='800' font-size='34' text-anchor='middle' fill='%23E86B60'%3EJP%3C/text%3E%3C/svg%3E">
+<style>
+/* Layout: a short split hero, then a catalogue of project cards; each card opens its own detail view (hash route) with video slot, who it's for, specs and a WhatsApp CTA naming the project. */
+/* Marca Jorge Pérez: coral #E86B60, carbón #25272A, blanco cálido #FAF8F5, gris #777777, Montserrat. */
+:root{
+  --bg:#FAF8F5; --surface:#FFFFFF; --ink:#25272A; --muted:#6E6E6E; --line:#E7E1DA;
+  --agave:#E86B60; --agave-ink:#FFFFFF; --sisal:#777777; --band:#F2EDE7;
+  --carbon:#25272A; --warm:#FAF8F5; --coral:#E86B60;
+  --display:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1E2023; --surface:#2A2C30; --ink:#FAF8F5; --muted:#ABABAB; --line:#3A3C41;
+  --agave:#EE7D73; --agave-ink:#1E2023; --sisal:#9A9A9A; --band:#25272A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1E2023; --surface:#2A2C30; --ink:#FAF8F5; --muted:#ABABAB; --line:#3A3C41;
+  --agave:#EE7D73; --agave-ink:#1E2023; --sisal:#9A9A9A; --band:#25272A; color-scheme:dark}
+*{box-sizing:border-box}
+img{height:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.015em;line-height:1.1;text-wrap:balance;margin:0}
+h3{font-weight:700}
+.wordmark{font-weight:800;font-size:1.15rem;letter-spacing:-.01em;line-height:1;text-transform:uppercase}
+.wordmark em{font-style:normal;color:var(--coral)}
+.wordmark i{font-style:normal;color:inherit}
+.who .wordmark{color:var(--ink);font-size:1.3rem}
+.who .wordmark em{color:var(--coral)}
+.who .tagline{font-size:.72rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+h1{font-size:clamp(2.1rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+h3{font-size:1.35rem}
+p{margin:0;max-width:62ch}
+.eyebrow{font:600 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--sisal)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sisal);outline-offset:3px;border-radius:6px}
+
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;flex-wrap:wrap}
+.who{display:flex;flex-direction:column;line-height:1.25;text-decoration:none}
+.who b{font-weight:700}
+.who span{font-size:.85rem;color:var(--muted)}
+
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--agave);transition:transform .15s ease;cursor:pointer;font:inherit;font-weight:600}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--agave);color:var(--agave-ink)}
+.btn.ghost{color:var(--agave);background:transparent}
+.btn.small{padding:9px 16px;font-size:.92rem}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+
+/* Hero: banda carbón fija, como el encabezado de la marca */
+.hero{background:var(--carbon);color:var(--warm)}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);color:var(--warm)}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero .lede{color:#CFCBC6}
+.hero .eyebrow{color:#B9B5B0}
+.hero .btn.primary{background:var(--coral);color:#FFFFFF;border-color:var(--coral)}
+.hero .btn.ghost{color:var(--warm);border-color:var(--warm)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,56px);align-items:center;padding-block:clamp(32px,5vw,60px)}
+.hero-text{display:flex;flex-direction:column;gap:18px;min-width:0}
+.lede{font-size:1.12rem;color:var(--muted)}
+.hero-video{display:block;width:100%;max-width:340px;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r);justify-self:end;background:var(--carbon)}
+.hero img{display:block;width:100%;max-width:380px;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;border-radius:var(--r);justify-self:end}
+
+/* Catalogue */
+section.block{padding-block:clamp(40px,6vw,72px)}
+section.band{background:var(--band)}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:border-color .15s ease}
+.card:hover{border-color:var(--agave)}
+.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--band)}
+.card .ph{aspect-ratio:4/3;background:var(--agave);color:var(--agave-ink);display:flex;align-items:flex-end;padding:18px}
+.card .ph span{font-family:var(--display);font-size:1.6rem;line-height:1.1}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .loc{font-size:.85rem;color:var(--muted)}
+.card p{font-size:.95rem;color:var(--muted)}
+.card .foot{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.card .from{font-size:.82rem;color:var(--muted)}
+.card .from b{display:block;font-family:var(--mono);font-size:1rem;color:var(--ink);font-weight:500}
+.card .go{font-weight:600;color:var(--agave);white-space:nowrap}
+.tag{display:inline-block;align-self:flex-start;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--agave);border:1px solid var(--agave);border-radius:999px;padding:3px 9px}
+
+/* Detail */
+.detail{padding-block:clamp(24px,4vw,48px)}
+.back{display:inline-flex;gap:6px;align-items:center;color:var(--agave);font-weight:600;text-decoration:none;margin-bottom:20px}
+.dgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,48px);align-items:start}
+.dgrid>*{min-width:0;display:flex;flex-direction:column;gap:22px}
+.video{position:relative;aspect-ratio:9/16;max-height:620px;width:100%;max-width:350px;border-radius:var(--r);background:var(--band);border:1px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;color:var(--muted)}
+.video b{color:var(--ink);font-size:1.05rem}
+.video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
+.panel ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.specs{margin:0;display:grid}
+.specs div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid var(--line)}
+.specs div:first-child{border-top:0}
+.specs dt{color:var(--muted)}
+.specs dd{margin:0;text-align:right;font-weight:500}
+.dimg{display:block;width:100%;border-radius:var(--r);border:1px solid var(--line)}
+.cap{font-size:.82rem;color:var(--muted)}
+.cta{background:var(--agave);color:var(--agave-ink);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px}
+.cta p{opacity:.92}
+.cta .btn.primary{background:var(--agave-ink);color:var(--agave);border-color:var(--agave-ink)}
+.cta .btn.ghost{color:var(--agave-ink);border-color:var(--agave-ink)}
+.contact{display:flex;flex-direction:column;gap:2px;font-size:.92rem}
+.contact .num{font-size:1.1rem;user-select:all}
+
+/* Advisor */
+.advisor .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,48px);align-items:center}
+.advisor img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 30%;border-radius:var(--r)}
+.advisor .text{display:flex;flex-direction:column;gap:14px;min-width:0}
+
+footer .wrap{padding-block:28px;font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){
+  .hero .wrap,.dgrid,.advisor .wrap{grid-template-columns:1fr}
+  .hero img{justify-self:start;max-width:300px}
+  .hero-video{justify-self:start;max-width:300px}
+  .video{max-width:100%;max-height:520px}
+}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="who" href="#" aria-label="Jorge Pérez, inicio"><span class="wordmark">Jorge <em>Pérez<i>.</i></em></span><span class="tagline">Asesor inmobiliario | Grupo López Rosa</span></a>
+    <div class="btns">
+      <a class="btn primary small" href="https://calendar.app.google/FhaESGJrWkosV7mh7" target="_blank" rel="noopener">Agendar llamada</a>
+      <a class="btn ghost small js-wa" data-msg="Hola Jorge, vi tu página de terrenos y tengo una duda." href="https://wa.me/529992399055" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="eyebrow">Terrenos y departamentos de inversión · Yucatán</span>
+        <h1>Inversiones sin tanto <em>rollo.</em></h1>
+        <p class="lede">Te ayudo a encontrar oportunidades reales en Yucatán con el respaldo de Grupo López Rosa. Toca el proyecto que te llame la atención: verás para quién es, qué esperar, tamaños y planes de pago, y te lo explico en video.</p>
+        <div class="btns"><a class="btn primary" href="#proyectos">Ver proyectos</a><a class="btn ghost" href="https://calendar.app.google/FhaESGJrWkosV7mh7" target="_blank" rel="noopener">Agenda una llamada de 15 min</a></div>
+      </div>
+      <video class="hero-video" src="video-presentacion.mp4" poster="img/presentacion-poster.jpg" controls playsinline preload="metadata" aria-label="Video de presentación de Jorge Pérez"></video>
+    </div>
+  </section>
+
+  <section class="block band" id="proyectos">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Proyectos</span>
+        <h2>Terrenos en la costa de Yucatán y departamentos en Conkal.</h2>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="block advisor">
+    <div class="wrap">
+      <img src="img/jorge-lopezrosa.jpg" alt="Jorge Pérez en las oficinas de Grupo López-Rosa" width="900" height="1118" loading="lazy">
+      <div class="text">
+        <span class="eyebrow">Tu asesor</span>
+        <h2>Una buena inversión comienza con una buena asesoría.</h2>
+        <p>Soy Jorge Pérez, asesor interno certificado de Grupo López-Rosa en Mérida, con más de 10 años en ventas y casi 6 en la desarrolladora. He ayudado a más de 200 personas a invertir en Yucatán, muchas sin vivir aquí. Te explico cada número antes de que pagues un peso y te llevo a conocer el terreno.</p>
+        <p>Grupo López-Rosa ha vendido más de 4 millones de m² y más de 15,000 unidades en Yucatán.</p>
+        <div class="btns">
+          <a class="btn primary js-wa" data-msg="Hola Jorge, vi tu página de terrenos. Quiero que me ayudes a elegir un proyecto." href="https://wa.me/529992399055" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+          <a class="btn ghost js-cal" href="https://calendar.app.google/FhaESGJrWkosV7mh7" target="_blank" rel="noopener">Agenda una llamada de 15 min</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="detail" hidden>
+  <section class="detail">
+    <div class="wrap" id="detailBody"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Página personal de Jorge Pérez, asesor de Grupo López-Rosa. No es el sitio oficial de los desarrollos. WhatsApp 999 239 9055 · ventas14@lopezrosa.com</p>
+    <p>Precios y planes de referencia, sujetos a cambio y disponibilidad. Confírmalos conmigo antes de apartar. Los apartados y enganches no son devolutivos. La plusvalía pasada no garantiza la futura. Imágenes de los brochures, ilustrativas.</p>
+  </div>
+</footer>
+
+<script>
+const WA = "https://wa.me/529992399055";
+const CAL = "https://calendar.app.google/FhaESGJrWkosV7mh7";
+const waLink = m => WA + "?text=" + encodeURIComponent(m);
+
+const P = [
+  {id:"terraviva", name:"Gran Hacienda Terraviva", loc:"Telchac, a minutos de la playa de Telchac Puerto", tag:"Sin enganche",
+   short:"La forma más accesible de empezar: sin enganche y queda pagado en 60 meses.",
+   from:"$2,576 al mes", img:"img/masterplan.jpg", imgAlt:"Masterplan de Gran Hacienda Terraviva",
+   video:"videos/terraviva.mp4", poster:"img/terraviva-poster.jpg",
+   who:["Tu primera inversión en terreno, sin juntar un enganche","Quieres pagarlo en 5 años y que quede liquidado, sin saldo al final","Te interesa que la zona tenga historial de plusvalía"],
+   expect:["El m² pasó de $125 en 2018 a $750 en mayo de 2026, según Grupo López-Rosa","Las primeras etapas ya se están entregando","Casa club, ciudad deportiva y acceso al club de playa Playaviva"],
+   specs:[["Lotes","160 m² y 249.83 m²"],["Precio por m²","$966"],["Lote de 160 m²","$154,560"],["Enganche","Sin enganche"],["Apartado","$2,000"],["Plan","60 meses sin intereses"],["Mensualidad","Desde $2,576"],["Uso de suelo","Habitacional"],["Entrega","Urbanización de la etapa 2 en 2030"]]},
+  {id:"puerto-telchac", name:"Puerto Telchac", loc:"A pie de carretera, a 2.5 km de la playa", tag:"El más vendido",
+   short:"Tu terreno a minutos del mar, con amenidades propias y acceso a la marina.",
+   from:"$2,500 al mes", img:"img/puertotelchac-render.jpg", imgAlt:"Parque acuático de Puerto Telchac",
+   detailImg:"img/puertotelchac.jpg", detailAlt:"Masterplan de Puerto Telchac",
+   video:"videos/puerto-telchac.mp4", poster:"img/puerto-telchac-poster.jpg",
+   who:["Quieres estar cerca de la playa y de la marina de Telchac","Buscas un plan con mensualidades bajas a 60 meses","Piensas construir para vacacionar o rentar"],
+   expect:["19 privadas con amenidades propias, parque acuático con toboganes, lago de mini-navegación y gimnasio al aire libre","Casa club de 13,685 m² y zona deportiva de 14,592 m²","Acceso al club de playa Playaviva y al Club Almirantes de la Marina Telchac","Al mes 61 queda un saldo que se liquida o se refinancia"],
+   specs:[["Lotes","160 m² y 200 m²"],["Precio","$506,400 y $633,000"],["Apartado","$3,000"],["Enganche","10%"],["Plan","60 meses sin intereses"],["Mensualidad","Desde $2,500"],["Saldo al mes 61","Se liquida o se refinancia"],["Entrega","2030 (160 m²) y 2031 (200 m²)"]]},
+  {id:"san-roque", name:"San Roque", loc:"Telchac Pueblo, a 10 km de Telchac Puerto", tag:"Amenidades deportivas",
+   short:"Comunidad vacacional con tenis, pádel, spa, cine al aire libre y lago artificial.",
+   from:"$1,999 al mes", img:"img/sanroque-render.jpg", imgAlt:"Render aéreo de la casa club y canchas de San Roque",
+   detailImg:"img/sanroque.jpg", detailAlt:"Masterplan de San Roque",
+   video:"videos/san-roque.mp4", poster:"img/san-roque-poster.jpg",
+   who:["Familias que buscan una comunidad con amenidades para todas las edades","Te gusta el deporte: tenis, pádel, ciclovía y circuito para correr","Quieres un lote más grande que el promedio"],
+   expect:["Casa club sobre más de 10,000 m², spa y cine al aire libre","17 privadas, una con lago artificial y dos de lotes premium","Papeles en regla: régimen de condominio, fideicomiso, licencia de fraccionamiento, factibilidad de CFE, liberación del INAH y manifiesto de impacto ambiental","Refinanciamiento del saldo a 72 meses (TIIE + 4%) o 132 meses (TIIE + 6%)"],
+   specs:[["Lotes","De 160 a 300 m²"],["Ubicación","Tablaje 732-A, Telchac Pueblo, verificable en el Registro Público (INSEJUPY)"],["Precio por m²","$2,520 regular · $2,772 esquina"],["Enganche","10%"],["Plan","60 meses sin intereses"],["Mensualidad","Desde $1,999"],["Descuento de contado","Hasta 15%"],["Entrega","Privadas desde 2027 · casa club 2031"]]},
+  {id:"mareta", name:"MARETA", loc:"Telchac Puerto, a menos de 300 m del mar", tag:"A pasos del mar",
+   short:"Privada de solo 99 terrenos con membresía vitalicia al club de yates.",
+   from:"$1.8 MDP", img:"img/mareta-alberca.jpg", imgAlt:"Render de la alberca de MARETA al atardecer",
+   detailImg:"img/mareta.jpg", detailAlt:"Masterplan de MARETA by Puerto Telchac",
+   video:"videos/mareta.mp4", poster:"img/mareta-poster.jpg",
+   who:["Quieres llegar caminando a la playa","Te interesa la vida náutica: yate, catamarán y wave runners","Buscas una privada exclusiva y de pocos lotes"],
+   expect:["Membresía vitalicia al club de yates, una por terreno: powercat, catamarán de vela y wave runners, con operador y sistema de puntos","Marina con rooftop y jacuzzis con vista al mar","Casa club de 2,960 m² con albercas, bar y salón de eventos","Además, todas las amenidades de Puerto Telchac: parque acuático, zona deportiva y lago de mini-navegación"],
+   specs:[["Lotes","200 m² (10 × 20 m)"],["Terrenos","99 en total"],["Precio","Desde $1.8 MDP ($9,000/m²)"],["Apartado","$5,000"],["Enganche","10%, diferible en 2 meses"],["Plan","60 meses sin intereses, saldo al mes 61"],["Entrega","Club de yates 2028 · casa club 2031"]]},
+  {id:"san-eduardo", name:"Hacienda San Eduardo", loc:"A la salida de Telchac Pueblo", tag:"Estilo hacienda",
+   short:"La última hacienda henequenera de la costa yucateca, con desfibradora funcionando y casa club en cada privada.",
+   from:"$1,999 al mes", img:"img/saneduardo-render.jpg", imgAlt:"Casa principal de Hacienda San Eduardo",
+   detailImg:"img/saneduardo.jpg", detailAlt:"Masterplan de Hacienda San Eduardo",
+   video:"videos/san-eduardo.mp4", poster:"img/san-eduardo-poster.jpg",
+   who:["Buscas tranquilidad y un entorno con historia","Quieres la mensualidad más baja para empezar","Te atrae la vida de hacienda con servicios modernos"],
+   expect:["Siete privadas, cada una con casa club; más de 4 hectáreas de amenidades","Hacienda de 3.3 hectáreas con desfibradora de henequén funcionando y recorridos","Respaldo de fideicomiso con Actinver","Acceso al club de playa Playaviva"],
+   specs:[["Lotes","160 y 250 m² · comerciales de 420 m²"],["Enganche","10%"],["Plan","Hasta 16 años; los primeros 60 meses sin intereses"],["Mensualidad","Desde $1,999"],["Construcción","Hasta 2 niveles y 8.5 m"],["Entrega","Privada 6 en 2026 · hacienda 2028"]]},
+  {id:"santa-clara", name:"Santa Clara Ecovillage", loc:"Santa Clara, a 2 minutos de la playa y a 1 hora de Mérida", tag:"Naturaleza",
+   short:"Ecoaldea junto a un ecoparque, con club de playa propio en Santa Clara.",
+   from:"$1,999 al mes", img:"img/santaclara-playaviva.jpg", imgAlt:"Render del club de playa Playaviva Santa Clara al atardecer",
+   detailImg:"img/santaclara.jpg", detailAlt:"Masterplan de Santa Clara Ecovillage",
+   video:"videos/santa-clara.mp4", poster:"img/santa-clara-poster.jpg",
+   who:["Te gusta la naturaleza y los espacios abiertos","Quieres playa tranquila, lejos de lo concurrido","Buscas lotes grandes, de 240 a 400 m², con el precio por m² más bajo de la costa"],
+   expect:["El m² pasó de $1,059 en su lanzamiento en 2022 a $2,400 de lista en 2026, según el brochure de Almaviva","A 2 minutos de las playas y salineras de Santa Clara, donde llegan los flamingos","Ecoparque con tres accesos peatonales y parque lineal","Casa club y club de playa Playaviva Santa Clara","Pabellones pet friendly, fitness y yoga"],
+   specs:[["Lotes","240, 300, 350 y 400 m², regulares o en esquina"],["Precio por m²","$2,100 regular · $2,310 esquina"],["Lote de 240 m²","$504,000"],["Plan","60 meses sin intereses"],["Mensualidad","Desde $1,999"],["Saldo al mes 61","Se liquida o se refinancia"],["Descuento de contado","Hasta 15%"],["Servicios","Calles pavimentadas, luz a pie de lote, drenaje pluvial y acceso controlado"]]},
+  {id:"custo", name:"Custó", loc:"Santa Clara, frente al mar, a 93 km de Mérida", tag:"Frente al mar",
+   short:"Terrenos frente al mar estilo resort, sin autos dentro: te mueves en carrito de golf.",
+   from:"$2.45 MDP", img:"img/custo.jpg", imgAlt:"Render de Calypso Beach Club en Custó",
+   video:"videos/custo.mp4", poster:"img/custo-poster.jpg",
+   who:["Quieres terreno con playa propia, no a minutos de ella","Buscas un desarrollo tipo resort para vacacionar o rentar","Valoras amenidades de primer nivel ya planeadas desde el inicio"],
+   expect:["3 km de playa y una exhacienda salinera convertida en restaurante de autor, lobby y business center","Dos beach clubs: Calypso (familiar) y Nautilus (solo adultos)","Cine al aire libre Lumière y centro wellness Siete Mares: pádel, yoga, gimnasio, spa, kayak y paddle board"],
+   specs:[["Zonas","Rosa, Oro, Platino, Bahía Plus y Bahía"],["Movilidad","Sin autos dentro, en carritos de golf"],["Ubicación","93 km de Mérida · 29.4 km de Telchac Puerto"],["Entrega","Lote habitable en 2027 · amenidades de 2028 a 2030"],["Mantenimiento","$2,700 al mes desde 2027"],["Precio","Desde $2.45 MDP"]]},
+  {id:"distrito-conkal", name:"Distrito Conkal", loc:"Conkal, al norte de Mérida, a 4.6 km del Periférico", tag:"Departamentos",
+   short:"Departamentos de 1 y 2 recámaras con roof privado, pensados para renta y con plaza comercial en la entrada.",
+   from:"$9,982 al mes", img:"img/conkal-render.jpg", imgAlt:"Render de la alberca y los edificios de Distrito Conkal",
+   detailImg:"img/conkal-masterplan.jpg", detailAlt:"Masterplan de Distrito Conkal con zona comercial y departamentos",
+   video:"videos/distrito-conkal.mp4", poster:"img/distrito-conkal-poster.jpg",
+   who:["Quieres invertir en un departamento para rentar en una zona de mucho crecimiento al norte de Mérida","Buscas empezar sin descapitalizarte: enganche bajo y mensualidades durante la obra","Prefieres que el saldo final se pague con crédito hipotecario y la renta ayude a cubrirlo"],
+   expect:["261 departamentos diseñados para renta, con albercas, áreas sociales y roof privado","Plaza comercial en la entrada: supermercado, restaurantes, consultorios, oficinas y hotel business class","A 8 km de Altabrisa, 11 km de La Isla y a menos de 10 km de hospitales","El saldo se paga contra entrega y se puede liquidar con crédito bancario"],
+   specs:[["Modelos","Kaia y Auma, 1 recámara (35 m²) · Lenéa, 2 recámaras (61.9 m²); en versión Garden o Roof"],["Precio","Desde $1,925,000 ($55,000/m²)"],["Precio de contado","Desde $1,610,000 (35 m²)"],["Apartado","$5,000"],["Enganche","Desde $19,250 (1%), en 10 días"],["Durante la obra","14% repartido en mensualidades hasta la entrega"],["Mensualidad","Desde $9,982 (hoy son 27 mensualidades)"],["Saldo contra entrega","85% ($1,636,250 en el de 35 m²), con crédito bancario o recursos propios"],["Entrega","Abril de 2029 (clúster 1)"]]}
+];
+
+const DOCS = {
+  "terraviva":[["Brochure Gran Hacienda Terraviva","docs/Brochure-Gran-Hacienda-Terraviva.pdf"]],
+  "puerto-telchac":[["Brochure Almaviva (incluye Puerto Telchac)","docs/Brochure-Almaviva.pdf"],["Anexo legal de Puerto Telchac","docs/Anexo-Legal-Puerto-Telchac.pdf"]],
+  "san-roque":[["Brochure Almaviva (incluye San Roque)","docs/Brochure-Almaviva.pdf"],["Anexo legal de San Roque","docs/Anexo-Legal-San-Roque.pdf"]],
+  "mareta":[["Brochure MARETA","docs/Brochure-MARETA.pdf"],["Anexo legal de MARETA","docs/Anexo-Legal-MARETA.pdf"]],
+  "san-eduardo":[["Brochure Hacienda San Eduardo","docs/Brochure-Hacienda-San-Eduardo.pdf"],["Anexo legal de San Eduardo","docs/Anexo-Legal-Hacienda-San-Eduardo.pdf"]],
+  "santa-clara":[["Brochure Santa Clara Ecovillage","docs/Brochure-Santa-Clara-Ecovillage.pdf"],["Anexo legal de Santa Clara","docs/Anexo-Legal-Santa-Clara-Ecovillage.pdf"]],
+  "custo":[["Brochure Custó","docs/Brochure-Custo.pdf"]],
+  "distrito-conkal":[["Brochure Distrito Conkal","docs/Brochure-Distrito-Conkal.pdf"]]
+};
+
+const grid = document.getElementById("grid");
+grid.innerHTML = P.map(p => `
+  <a class="card" href="#${p.id}">
+    ${p.img ? `<img src="${p.img}" alt="${p.imgAlt}" loading="lazy" width="997" height="758">` : `<div class="ph"><span>${p.name}</span></div>`}
+    <div class="body">
+      <span class="tag">${p.tag}</span>
+      <h3>${p.name}</h3>
+      <span class="loc">${p.loc}</span>
+      <p>${p.short}</p>
+      <div class="foot"><span class="from">${p.fromLabel || "Desde"}<b>${p.from}</b></span><span class="go">Ver explicación →</span></div>
+    </div>
+  </a>`).join("");
+
+const li = a => a.map(x => `<li>${x}</li>`).join("");
+function renderDetail(p){
+  const msg = `Hola Jorge, vi tu página y me interesa ${p.name}. Tengo una duda: `;
+  const video = p.video
+    ? `<div class="video"><video src="${p.video}" ${p.poster ? `poster="${p.poster}"` : ""} controls playsinline preload="metadata"></video></div>`
+    : `<div class="video"><b>Te lo explico en video</b><span>Aquí va mi explicación de ${p.name} en menos de 2 minutos.</span><span>Mientras, escríbeme y te la mando por WhatsApp.</span></div>`;
+  document.getElementById("detailBody").innerHTML = `
+    <a class="back" href="#proyectos">← Todos los proyectos</a>
+    <div class="dgrid">
+      <div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span class="eyebrow">${p.loc}</span>
+          <h1>${p.name}</h1>
+          <p class="lede">${p.short}</p>
+        </div>
+        ${video}
+      </div>
+      <div>
+        <div class="panel"><h3>Es para ti si…</h3><ul>${li(p.who)}</ul></div>
+        <div class="panel"><h3>Qué esperar</h3><ul>${li(p.expect)}</ul></div>
+        <div class="panel"><h3>Especificaciones</h3><dl class="specs">${p.specs.map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}</dl></div>
+        ${DOCS[p.id] ? `<div class="panel"><h3>Descarga el brochure y anexo legal</h3><p class="cap" style="margin:0 0 12px">PDF oficial del desarrollo. Precios y promociones se confirman conmigo.</p><div class="btns">${DOCS[p.id].map(d=>`<a class="btn ghost" href="${d[1]}" download target="_blank" rel="noopener">↓ ${d[0]}</a>`).join("")}</div></div>` : ""}
+        <div class="cta">
+          <h3>¿Te llamó la atención?</h3>
+          <p>Escríbeme diciendo que te interesa ${p.name} o mándame tu duda. Si prefieres hablarlo, elige un horario y te llamo 15 minutos.</p>
+          <div class="btns">
+            <a class="btn primary" href="${waLink(msg)}" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+            <a class="btn ghost" href="${CAL}" target="_blank" rel="noopener">Agendar llamada de 15 min</a>
+          </div>
+          <div class="contact"><span>WhatsApp directo</span><span class="num">999 239 9055</span><span style="margin-top:8px">Correo</span><span class="num">ventas14@lopezrosa.com</span></div>
+        </div>
+        ${p.img ? `<figure style="margin:0;display:flex;flex-direction:column;gap:8px"><img class="dimg" src="${p.detailImg || p.img}" alt="${p.detailAlt || p.imgAlt}" loading="lazy"><figcaption class="cap">Imagen del brochure, ilustrativa.</figcaption></figure>` : ""}
+      </div>
+    </div>`;
+}
+
+const home = document.getElementById("home"), detail = document.getElementById("detail");
+function route(){
+  const id = location.hash.slice(1);
+  const p = P.find(x => x.id === id);
+  if (p){ renderDetail(p); home.hidden = true; detail.hidden = false; window.scrollTo(0,0); }
+  else { home.hidden = false; detail.hidden = true; if (id){ const el = document.getElementById(id); if (el) el.scrollIntoView(); } }
+}
+window.addEventListener("hashchange", route);
+document.querySelectorAll(".js-wa").forEach(a => a.href = waLink(a.dataset.msg));
+route();
+</script>
+</body>
+</html>
