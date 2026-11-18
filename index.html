@@ -108,6 +108,7 @@ section.band{background:var(--band)}
 .video{position:relative;aspect-ratio:9/16;max-height:620px;width:100%;max-width:350px;border-radius:var(--r);background:var(--band);border:1px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;color:var(--muted)}
 .video b{color:var(--ink);font-size:1.05rem}
 .video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.unmute{position:absolute;left:50%;top:16px;transform:translateX(-50%);z-index:2;border:0;border-radius:999px;padding:10px 16px;background:var(--coral);color:#fff;font:600 .9rem/1 var(--body);box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;white-space:nowrap}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
 .panel ul{margin:0;padding-left:20px;display:grid;gap:6px}
 .specs{margin:0;display:grid}
@@ -303,7 +304,7 @@ const li = a => a.map(x => `<li>${x}</li>`).join("");
 function renderDetail(p){
   const msg = `Hola Jorge, vi tu página y me interesa ${p.name}. Tengo una duda: `;
   const video = p.video
-    ? `<div class="video"><video src="${p.video}" ${p.poster ? `poster="${p.poster}"` : ""} controls playsinline preload="metadata"></video></div>`
+    ? `<div class="video"><video src="${p.video}" ${p.poster ? `poster="${p.poster}"` : ""} controls playsinline autoplay preload="auto"></video><button type="button" class="unmute" hidden>🔊 Toca para activar el sonido</button></div>`
     : `<div class="video"><b>Te lo explico en video</b><span>Aquí va mi explicación de ${p.name} en menos de 2 minutos.</span><span>Mientras, escríbeme y te la mando por WhatsApp.</span></div>`;
   document.getElementById("detailBody").innerHTML = `
     <a class="back" href="#proyectos">← Todos los proyectos</a>
@@ -335,11 +336,21 @@ function renderDetail(p){
     </div>`;
 }
 
+
+function autoPlay(){
+  const v = document.querySelector("#detailBody video"); if (!v) return;
+  const btn = v.parentElement.querySelector(".unmute");
+  const showBtn = () => { btn.hidden = false; };
+  btn.onclick = () => { v.muted = false; v.volume = 1; v.play().catch(()=>{}); btn.hidden = true; };
+  v.addEventListener("volumechange", () => { if (!v.muted) btn.hidden = true; });
+  v.muted = false;
+  v.play().catch(() => { v.muted = true; v.play().then(showBtn).catch(showBtn); });
+}
 const home = document.getElementById("home"), detail = document.getElementById("detail");
 function route(){
   const id = location.hash.slice(1);
   const p = P.find(x => x.id === id);
-  if (p){ renderDetail(p); home.hidden = true; detail.hidden = false; window.scrollTo(0,0); }
+  if (p){ renderDetail(p); home.hidden = true; detail.hidden = false; window.scrollTo(0,0); autoPlay(); }
   else { home.hidden = false; detail.hidden = true; if (id){ const el = document.getElementById(id); if (el) el.scrollIntoView(); } }
 }
 window.addEventListener("hashchange", route);
