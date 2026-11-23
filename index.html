@@ -78,7 +78,8 @@ a{color:inherit}
 .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,56px);align-items:center;padding-block:clamp(32px,5vw,60px)}
 .hero-text{display:flex;flex-direction:column;gap:18px;min-width:0}
 .lede{font-size:1.12rem;color:var(--muted)}
-.hero-video{display:block;width:100%;max-width:340px;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r);justify-self:end;background:var(--carbon)}
+.hero-media{position:relative;justify-self:end;width:100%;max-width:340px}
+.hero-video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r);justify-self:end;background:var(--carbon)}
 .hero img{display:block;width:100%;max-width:380px;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;border-radius:var(--r);justify-self:end}
 
 /* Catalogue */
@@ -136,7 +137,7 @@ footer .wrap{padding-block:28px;font-size:.82rem;color:var(--muted);display:flex
 @media (max-width:760px){
   .hero .wrap,.dgrid,.advisor .wrap{grid-template-columns:1fr}
   .hero img{justify-self:start;max-width:300px}
-  .hero-video{justify-self:start;max-width:300px}
+  .hero-media{justify-self:start;max-width:300px}
   .video{max-width:100%;max-height:520px}
 }
 @media (max-width:560px){.grid{grid-template-columns:1fr}}
@@ -162,7 +163,7 @@ footer .wrap{padding-block:28px;font-size:.82rem;color:var(--muted);display:flex
         <p class="lede">Te ayudo a encontrar oportunidades reales en Yucatán con el respaldo de Grupo López Rosa. Toca el proyecto que te llame la atención: verás para quién es, qué esperar, tamaños y planes de pago, y te lo explico en video.</p>
         <div class="btns"><a class="btn primary" href="#proyectos">Ver proyectos</a><a class="btn ghost" href="https://calendar.app.google/FhaESGJrWkosV7mh7" target="_blank" rel="noopener">Agenda una llamada de 15 min</a></div>
       </div>
-      <video class="hero-video" src="video-presentacion.mp4" poster="img/presentacion-poster.jpg" controls playsinline preload="metadata" aria-label="Video de presentación de Jorge Pérez"></video>
+      <div class="hero-media"><video class="hero-video" src="video-presentacion.mp4" poster="img/presentacion-poster.jpg" controls playsinline autoplay preload="auto" aria-label="Video de presentación de Jorge Pérez"></video><button type="button" class="unmute" hidden>🔊 Toca para activar el sonido</button></div>
     </div>
   </section>
 
@@ -337,8 +338,8 @@ function renderDetail(p){
 }
 
 
-function autoPlay(){
-  const v = document.querySelector("#detailBody video"); if (!v) return;
+function autoPlay(sel){
+  const v = document.querySelector(sel || "#detailBody video"); if (!v) return;
   const btn = v.parentElement.querySelector(".unmute");
   const showBtn = () => { btn.hidden = false; };
   btn.onclick = () => { v.muted = false; v.volume = 1; v.play().catch(()=>{}); btn.hidden = true; };
@@ -350,8 +351,9 @@ const home = document.getElementById("home"), detail = document.getElementById("
 function route(){
   const id = location.hash.slice(1);
   const p = P.find(x => x.id === id);
-  if (p){ renderDetail(p); home.hidden = true; detail.hidden = false; window.scrollTo(0,0); autoPlay(); }
-  else { home.hidden = false; detail.hidden = true; if (id){ const el = document.getElementById(id); if (el) el.scrollIntoView(); } }
+  const hv = document.querySelector(".hero-video");
+  if (p){ if (hv) hv.pause(); renderDetail(p); home.hidden = true; detail.hidden = false; window.scrollTo(0,0); autoPlay(); }
+  else { home.hidden = false; detail.hidden = true; if (!id) autoPlay(".hero-video"); if (id){ const el = document.getElementById(id); if (el) el.scrollIntoView(); } }
 }
 window.addEventListener("hashchange", route);
 document.querySelectorAll(".js-wa").forEach(a => a.href = waLink(a.dataset.msg));
